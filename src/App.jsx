@@ -82,17 +82,17 @@ function App() {
         <div className="utility-bar">
           <button type="button" className="utility-location">
             <span>You&apos;re in Pan Pacific Suzhou</span>
-            <span aria-hidden="true">⌄</span>
+            <span aria-hidden="true">&or;</span>
           </button>
           <div className="utility-actions">
             <button type="button" className="utility-item">
               <span>CNY</span>
-              <span aria-hidden="true">⌄</span>
+              <span aria-hidden="true">&or;</span>
             </button>
             <button type="button" className="utility-item utility-item--language">
               <span className="utility-dot" aria-hidden="true" />
               <span>English</span>
-              <span aria-hidden="true">⌄</span>
+              <span aria-hidden="true">&or;</span>
             </button>
             <a href="/">Manage Booking</a>
             <button type="button" className="icon-search" aria-label="Search">

@@ -6,17 +6,19 @@
     sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #f7f1e5;
-  background:
-    radial-gradient(circle at top, rgba(104, 77, 34, 0.2), transparent 32%),
-    #2b2323;
+  color: #2f2931;
+  background: #f7f1e6;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --page-bg: #2c2424;
+  --page-bg: #f7f1e6;
   --panel-bg: #f8f4ed;
   --muted-text: #78664c;
+  --content-width: 1160px;
+  --page-gutter: clamp(20px, 4vw, 48px);
+  --section-space: clamp(56px, 8vw, 96px);
+  --section-space-tight: clamp(28px, 5vw, 56px);
   --heading-font:
     "IvyPresto Display",
     "Baskerville",
@@ -36,6 +38,7 @@ body {
   margin: 0;
   min-width: 320px;
   background: var(--page-bg);
+  color: #2f2931;
 }
 
 body,
@@ -74,7 +77,7 @@ h3 {
 h2 {
   font-size: clamp(2.4rem, 4vw, 3.6rem);
   line-height: 1;
-  color: #fff4e2;
+  color: #2f2931;
 }
 
 p {
