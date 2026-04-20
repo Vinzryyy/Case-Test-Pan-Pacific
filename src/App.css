@@ -6,10 +6,10 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(249, 246, 240, 0.97);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(181, 151, 85, 0.22);
-  box-shadow: 0 12px 30px rgba(37, 24, 11, 0.08);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(181, 151, 85, 0.16);
+  box-shadow: 0 6px 18px rgba(37, 24, 11, 0.05);
 }
 
 .utility-bar,
@@ -27,9 +27,22 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  min-height: 40px;
-  font-size: 0.76rem;
-  color: var(--muted-text);
+  min-height: 28px;
+  font-size: 0.67rem;
+  color: #65594b;
+}
+
+.utility-location,
+.utility-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 }
 
 .utility-actions {
@@ -43,21 +56,36 @@
   text-decoration: none;
 }
 
+.utility-item--language {
+  gap: 6px;
+}
+
+.utility-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, #d83535 0 50%, transparent 50%),
+    linear-gradient(180deg, #d83535 0 50%, transparent 50%),
+    #f6f6f6;
+  box-shadow: inset 0 0 0 1px rgba(120, 91, 43, 0.18);
+}
+
 .icon-search {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border: 0;
-  border-radius: 999px;
   background: transparent;
   cursor: pointer;
   display: grid;
   place-items: center;
+  padding: 0;
 }
 
 .icon-search span {
-  width: 11px;
-  height: 11px;
-  border: 1.8px solid #533d1b;
+  width: 9px;
+  height: 9px;
+  border: 1.4px solid #533d1b;
   border-radius: 50%;
   position: relative;
 }
@@ -65,8 +93,8 @@
 .icon-search span::after {
   content: '';
   position: absolute;
-  width: 6px;
-  height: 1.8px;
+  width: 5px;
+  height: 1.4px;
   background: #533d1b;
   right: -5px;
   bottom: -2px;
@@ -75,11 +103,12 @@
 }
 
 .main-nav {
-  min-height: 74px;
+  min-height: 52px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+  padding: 6px 0 8px;
 }
 
 .brand-cluster,
@@ -89,12 +118,12 @@
 }
 
 .brand-cluster {
-  gap: 16px;
+  gap: 12px;
 }
 
 .menu-button {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -106,50 +135,22 @@
 
 .menu-button span {
   display: block;
-  width: 18px;
-  height: 1.8px;
+  width: 17px;
+  height: 1.5px;
   margin: 0 auto;
-  background: #3a2a14;
+  background: #342514;
 }
 
-.brand-mark {
-  width: 24px;
-  height: 30px;
-  border-radius: 4px;
-  background: linear-gradient(180deg, #ddc37b, #af7f26);
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 2px;
-  padding: 3px;
-  box-shadow: inset 0 0 0 1px rgba(76, 49, 7, 0.16);
-}
-
-.brand-mark span {
-  border-radius: 2px;
-  border: 1px solid rgba(255, 250, 232, 0.75);
-}
-
-.brand-copy {
-  display: grid;
-  gap: 2px;
-  text-align: left;
-  color: #593b12;
-}
-
-.brand-copy strong {
-  font-size: 0.95rem;
-  letter-spacing: 0.24em;
-}
-
-.brand-copy span {
-  font-size: 0.63rem;
-  letter-spacing: 0.34em;
+.brand-logo {
+  display: block;
+  width: 75px;
+  height: auto;
 }
 
 .nav-links {
-  gap: 18px;
+  gap: 16px;
   color: #6f5a35;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
 }
 
 .nav-links a {
@@ -157,17 +158,94 @@
   text-decoration: none;
 }
 
+.discovery-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.discovery-link__icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #b49042;
+  position: relative;
+}
+
+.discovery-link__icon::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1px solid rgba(180, 144, 66, 0.65);
+}
+
+.discovery-link__muted {
+  color: #b49042;
+}
+
 .pill-button {
-  padding: 0.78rem 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.7rem 1.15rem;
   border-radius: 999px;
-  border: 1px solid rgba(186, 149, 79, 0.55);
-  background: rgba(255, 251, 242, 0.8);
+  border: 1px solid rgba(186, 149, 79, 0.65);
+  background: #fffdf8;
   color: #946d1f;
-  box-shadow: inset 0 0 0 1px rgba(255, 244, 215, 0.65);
+  box-shadow: none;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .pill-button--solid {
-  background: rgba(211, 177, 94, 0.18);
+  background: #fffdf8;
+}
+
+.pill-button__icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(186, 149, 79, 0.7);
+  display: inline-block;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.pill-button__icon::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 5px;
+  bottom: 5px;
+  border: 1px solid rgba(186, 149, 79, 0.85);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+}
+
+.pill-button__icon--bag::before {
+  left: 5px;
+  right: 5px;
+  top: 6px;
+  bottom: 4px;
+  border-radius: 2px;
+}
+
+.pill-button__icon--bag::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 4px;
+  height: 4px;
+  border: 1px solid rgba(186, 149, 79, 0.85);
+  border-bottom: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .hero-section {
@@ -772,6 +850,77 @@
   text-transform: uppercase;
 }
 
+.destinations-section {
+  background: #f7f1e6;
+  padding: 62px 0 72px;
+}
+
+.destinations-layout {
+  width: min(1040px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) 300px;
+  gap: 68px;
+  align-items: start;
+}
+
+.destinations-copy h2 {
+  margin: 0;
+  max-width: 520px;
+  color: #2f2931;
+  font-size: clamp(3rem, 4.8vw, 4.7rem);
+  line-height: 0.92;
+}
+
+.destinations-copy p {
+  max-width: 560px;
+  margin-top: 22px;
+  color: #433933;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.destinations-list {
+  margin-top: 38px;
+}
+
+.destination-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 14px;
+  border: 0;
+  border-bottom: 1px solid rgba(188, 165, 124, 0.42);
+  background: transparent;
+  color: #30292f;
+  font-family: var(--heading-font);
+  font-size: clamp(2rem, 2.4vw, 2.8rem);
+  line-height: 1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.destination-item--active {
+  margin: 10px 0;
+  padding: 22px 18px;
+  border-bottom-color: transparent;
+  background: #b28d2f;
+  color: #fff8eb;
+}
+
+.destination-item--active span:last-child {
+  font-size: 1.25rem;
+}
+
+.destinations-media img {
+  width: 100%;
+  aspect-ratio: 0.72 / 1.58;
+  object-fit: cover;
+  object-position: center;
+}
+
 @media (max-width: 1080px) {
   .main-nav,
   .utility-bar,
@@ -781,14 +930,15 @@
   .editors-pick__layout,
   .journey-layout,
   .experience-tabs,
-  .romantic-hero {
+  .romantic-hero,
+  .destinations-layout {
     width: min(1280px, calc(100% - 32px));
   }
 
   .main-nav {
     flex-direction: column;
     align-items: stretch;
-    padding: 14px 0 18px;
+    padding: 10px 0 14px;
   }
 
   .nav-links {
@@ -802,7 +952,8 @@
   .journey-cards,
   .experience-tabs,
   .romantic-hero__content,
-  .romantic-cards {
+  .romantic-cards,
+  .destinations-layout {
     grid-template-columns: 1fr;
   }
 
@@ -837,6 +988,10 @@
   .romantic-summary {
     max-width: none;
   }
+
+  .destinations-media {
+    max-width: 360px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -846,21 +1001,20 @@
 
   .main-nav {
     min-height: auto;
-    padding: 16px 0;
+    padding: 12px 0;
   }
 
-  .brand-copy strong {
-    font-size: 0.82rem;
-    letter-spacing: 0.18em;
+  .brand-logo {
+    width: 90px;
   }
 
   .nav-links {
     gap: 12px;
-    font-size: 0.74rem;
+    font-size: 0.68rem;
   }
 
   .pill-button {
-    padding: 0.72rem 0.92rem;
+    padding: 0.64rem 0.88rem;
   }
 
   .hero-section {
@@ -930,5 +1084,17 @@
 
   .romantic-cards {
     padding: 16px;
+  }
+
+  .destinations-section {
+    padding: 48px 0 56px;
+  }
+
+  .destinations-layout {
+    gap: 28px;
+  }
+
+  .destination-item {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
   }
 }

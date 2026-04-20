@@ -73,15 +73,27 @@ const romanticCards = [
   },
 ]
 
+const destinations = ['Singapore', 'Australia', 'Malaysia', 'China', 'Canada', 'More destinations']
+
 function App() {
   return (
     <div className="page-shell">
       <header className="site-header">
         <div className="utility-bar">
-          <span>You&apos;re in Pan Pacific Suzhou</span>
+          <button type="button" className="utility-location">
+            <span>You&apos;re in Pan Pacific Suzhou</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
           <div className="utility-actions">
-            <span>CNY</span>
-            <span>English</span>
+            <button type="button" className="utility-item">
+              <span>CNY</span>
+              <span aria-hidden="true">⌄</span>
+            </button>
+            <button type="button" className="utility-item utility-item--language">
+              <span className="utility-dot" aria-hidden="true" />
+              <span>English</span>
+              <span aria-hidden="true">⌄</span>
+            </button>
             <a href="/">Manage Booking</a>
             <button type="button" className="icon-search" aria-label="Search">
               <span />
@@ -96,24 +108,23 @@ function App() {
               <span />
               <span />
             </button>
-            <div className="brand-mark" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="brand-copy">
-              <strong>PAN PACIFIC</strong>
-              <span>SUZHOU</span>
-            </div>
+            <img src="/Logo.png" alt="Pan Pacific Hotels and Resorts" className="brand-logo" />
           </div>
 
           <nav className="nav-links" aria-label="Primary">
-            <a href="/">Pan Pacific DISCOVERY Join</a>
-            <a href="/">Sign In</a>
+            <a href="/" className="discovery-link">
+              <span className="discovery-link__icon" aria-hidden="true" />
+              <span>Pan Pacific DISCOVERY</span>
+              <span className="discovery-link__muted">Join</span>
+              <span className="discovery-link__muted">|</span>
+              <span className="discovery-link__muted">Sign In</span>
+            </a>
             <a href="/" className="pill-button pill-button--solid">
+              <span className="pill-button__icon" aria-hidden="true" />
               Book Now
             </a>
             <a href="/" className="pill-button">
+              <span className="pill-button__icon pill-button__icon--bag" aria-hidden="true" />
               Dine With Us
             </a>
           </nav>
@@ -303,6 +314,38 @@ function App() {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="destinations-section">
+          <div className="destinations-layout">
+            <div className="destinations-copy">
+              <h2>Explore your next adventure with Pan Pacific</h2>
+              <p>
+                Discover your next adventure with our handpicked travel
+                inspiration, exciting guides, and spotlighted destinations from
+                Pan Pacific that will ignite your wanderlust!
+              </p>
+
+              <div className="destinations-list" aria-label="Destination list">
+                {destinations.map((destination) => (
+                  <button
+                    key={destination}
+                    type="button"
+                    className={`destination-item${
+                      destination === 'Australia' ? ' destination-item--active' : ''
+                    }`}
+                  >
+                    <span>{destination}</span>
+                    {destination === 'Australia' ? <span aria-hidden="true">&rarr;</span> : null}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="destinations-media">
+              <img src="/ausie.png" alt="Australia destination view" />
             </div>
           </div>
         </section>
