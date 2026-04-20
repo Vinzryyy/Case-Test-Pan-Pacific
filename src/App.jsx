@@ -23,6 +23,29 @@ const trendingItems = [
 
 const editorTags = ['Couple', 'Travel Guide', 'Honey Moon', 'Cities & Night Life', 'Romance']
 
+const journeyFilters = [
+  'All',
+  'Road Trips',
+  'Sustainable Travel',
+  'Photo Journal',
+  'Romantic',
+  'Family Bonding',
+  'Jet Setting',
+]
+
+const journeyCards = [
+  {
+    location: 'Singapore',
+    title: 'Lorem ipsum dolor sit amet consectetur',
+    image: '/Istock.jpg',
+  },
+  {
+    location: 'Singapore',
+    title: 'Lorem ipsum dolor sit amet consectetur',
+    image: '/Istock.jpg',
+  },
+]
+
 function App() {
   return (
     <div className="page-shell">
@@ -118,16 +141,14 @@ function App() {
 
         <section className="editors-pick-section">
           <div className="editors-pick__heading">
-            <span className="section-icon" aria-hidden="true">
-              ♕
-            </span>
+            <span className="section-icon" aria-hidden="true" />
             <h2>Editor&apos;s pick</h2>
           </div>
 
           <div className="editors-pick__layout">
             <div className="editors-pick__media">
               <img
-                src="/card%20Road%20Trips.png"
+                src="/Editor'sPick.png"
                 alt="Featured editorial story"
                 className="editors-pick__image"
               />
@@ -145,6 +166,59 @@ function App() {
                 Read more
               </a>
             </article>
+          </div>
+        </section>
+
+        <section className="journey-section">
+          <div className="journey-layout">
+            <aside className="journey-sidebar">
+              <h2>Globe-trot with Pan Pacific</h2>
+              <div className="journey-filters" aria-label="Journey categories">
+                {journeyFilters.map((filter) => (
+                  <button
+                    key={filter}
+                    type="button"
+                    className={`journey-filter${
+                      filter === 'Photo Journal' ? ' journey-filter--active' : ''
+                    }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+
+              <div className="journey-nav">
+                <button type="button" aria-label="Previous stories">
+                  <span aria-hidden="true">&larr;</span>
+                </button>
+                <button type="button" aria-label="Next stories">
+                  <span aria-hidden="true">&rarr;</span>
+                </button>
+              </div>
+            </aside>
+
+            <div className="journey-cards">
+              {journeyCards.map((card, index) => (
+                <article key={`${card.title}-${index}`} className="journey-card">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="journey-card__image"
+                  />
+                  <div className="journey-card__body">
+                    <span className="journey-card__location">{card.location}</span>
+                    <h3>{card.title}</h3>
+                    <div className="journey-card__tags">
+                      <span>Category</span>
+                      <span>Category</span>
+                    </div>
+                  </div>
+                  <a href="/" className="journey-card__cta" aria-label={`Read ${card.title}`}>
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </main>
