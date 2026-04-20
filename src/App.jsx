@@ -21,6 +21,8 @@ const trendingItems = [
   },
 ]
 
+const editorTags = ['Couple', 'Travel Guide', 'Honey Moon', 'Cities & Night Life', 'Romance']
+
 function App() {
   return (
     <div className="page-shell">
@@ -93,9 +95,9 @@ function App() {
           </div>
 
           <div className="card-grid">
-            {trendingItems.map((item) => (
+            {trendingItems.map((item, index) => (
               <article
-                key={`${item.title}-${item.image}`}
+                key={`${item.title}-${index}`}
                 className="trend-card"
                 style={{ '--card-image': `url(${item.image})` }}
               >
@@ -105,12 +107,44 @@ function App() {
                   <h3>{item.title}</h3>
                   <div className="trend-card__meta">
                     {item.labels.map((label) => (
-                      <span key={label}>{label}</span>
+                      <span key={`${index}-${label}`}>{label}</span>
                     ))}
                   </div>
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="editors-pick-section">
+          <div className="editors-pick__heading">
+            <span className="section-icon" aria-hidden="true">
+              ♕
+            </span>
+            <h2>Editor&apos;s pick</h2>
+          </div>
+
+          <div className="editors-pick__layout">
+            <div className="editors-pick__media">
+              <img
+                src="/card%20Road%20Trips.png"
+                alt="Featured editorial story"
+                className="editors-pick__image"
+              />
+            </div>
+
+            <article className="editors-pick__content">
+              <span className="editors-pick__location">Singapore</span>
+              <h3>Article title max 2 liners than truncate goes here</h3>
+              <div className="editors-pick__tags">
+                {editorTags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+              <a href="/" className="editors-pick__link">
+                Read more
+              </a>
+            </article>
           </div>
         </section>
       </main>
