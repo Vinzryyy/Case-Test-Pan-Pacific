@@ -4,8 +4,6 @@ A responsive marketing page built as a front-end case study: Pan Pacific Hotels'
 
 > **Live demo:** _add Vercel/Netlify URL here after deploy_
 
-![Desktop preview](./web.gif)
-![Mobile and footer](./Mobile%20and%20footer.gif)
 
 ## Highlights
 

@@ -113,30 +113,93 @@ export const journeyCards = [
   },
 ]
 
-export const experienceTabs = [
-  { title: 'For Couples', image: '/couple.png' },
-  { title: 'For Family', image: '/family.png' },
-  { title: 'For Business', image: '/business.png' },
-]
-
-export const romanticCards = [
+export const experienceCategories = [
   {
-    location: 'Canada',
-    title: 'Top Whistler honeymoon or babymoon staycation ideas',
-    labels: ['Couple', 'Travel Guides', 'Winter', 'Honey Moon', 'Nature'],
-    image: '/Istock.jpg',
+    id: 'couples',
+    tabTitle: 'For Couples',
+    tabImage: '/couple.png',
+    heroTitle: 'Romantic Escapes',
+    heroImage: '/Romantic.png',
+    summary:
+      "Discover the ultimate romantic getaway: you need a dreamy destination. One that's perfect for couples celebrating their honeymoon or babymoon!",
+    cards: [
+      {
+        location: 'Canada',
+        title: 'Top Whistler honeymoon or babymoon staycation ideas',
+        labels: ['Couple', 'Travel Guides', 'Winter', 'Honey Moon', 'Nature'],
+        image: '/Istock.jpg',
+      },
+      {
+        location: 'Singapore',
+        title: 'Candle-lit Marina Bay terrace dinners for two',
+        labels: ['Couple', 'City', 'Fine Dining', 'Nightlife'],
+        image: '/Destination/Singapore.jpg',
+      },
+      {
+        location: 'Malaysia',
+        title: 'Rooftop escapes above the Kuala Lumpur skyline',
+        labels: ['Couple', 'City', 'Sunset', 'Romance'],
+        image: '/Destination/Malaysia.jpg',
+      },
+    ],
   },
   {
-    location: 'Canada',
-    title: 'Top Whistler honeymoon or babymoon staycation ideas',
-    labels: ['Couple', 'Travel Guides', 'Winter', 'Honey Moon', 'Nature'],
-    image: '/Istock.jpg',
+    id: 'family',
+    tabTitle: 'For Family',
+    tabImage: '/family.png',
+    heroTitle: 'Family Adventures',
+    heroImage: '/family.png',
+    summary:
+      'Create memories that last a lifetime. Our family-friendly destinations offer something for every generation — from theme parks and beaches to cultural adventures the kids will never forget.',
+    cards: [
+      {
+        location: 'Singapore',
+        title: 'A weekend of wonder: Sentosa Island with kids',
+        labels: ['Family', 'Beach', 'Adventure', 'Theme Park'],
+        image: '/Destination/Singapore.jpg',
+      },
+      {
+        location: 'Australia',
+        title: 'Melbourne zoos and parks for little explorers',
+        labels: ['Family', 'Wildlife', 'Outdoors', 'Kids'],
+        image: '/Destination/ausie.png',
+      },
+      {
+        location: 'Malaysia',
+        title: 'Kuala Lumpur aquarium and tower for curious minds',
+        labels: ['Family', 'City', 'Culture', 'Kids'],
+        image: '/Destination/Malaysia.jpg',
+      },
+    ],
   },
   {
-    location: 'Canada',
-    title: 'Top Whistler honeymoon or babymoon staycation ideas',
-    labels: ['Couple', 'Travel Guides', 'Winter', 'Honey Moon', 'Nature'],
-    image: '/Istock.jpg',
+    id: 'business',
+    tabTitle: 'For Business',
+    tabImage: '/business.png',
+    heroTitle: 'Business Travel',
+    heroImage: '/business.png',
+    summary:
+      'Stay productive on the road. Our business-ready suites offer fast Wi-Fi, dedicated workspaces, and seamless meeting facilities for the modern professional.',
+    cards: [
+      {
+        location: 'Singapore',
+        title: 'Executive suites in the heart of Marina Bay',
+        labels: ['Business', 'City', 'Workspace', 'Wi-Fi'],
+        image: '/Destination/Singapore.jpg',
+      },
+      {
+        location: 'China',
+        title: 'Suzhou conference-ready residences',
+        labels: ['Business', 'Meetings', 'Workspace'],
+        image: '/Destination/China.jpg',
+      },
+      {
+        location: 'Australia',
+        title: 'Melbourne work-from-suite stays',
+        labels: ['Business', 'City', 'Workspace'],
+        image: '/Destination/ausie.png',
+      },
+    ],
   },
 ]
 
