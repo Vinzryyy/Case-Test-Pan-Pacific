@@ -1,10 +1,27 @@
+import { useState } from 'react'
 import {
   footerBrandLogos,
   footerBrandSections,
   footerPolicies,
 } from '../constants/data'
+import { subscribeNewsletter } from '../api'
 
 function Footer() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState({ kind: 'idle', message: '' })
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    setStatus({ kind: 'loading', message: '' })
+    try {
+      await subscribeNewsletter(email)
+      setStatus({ kind: 'success', message: 'Subscribed — thanks!' })
+      setEmail('')
+    } catch (err) {
+      setStatus({ kind: 'error', message: err.message })
+    }
+  }
+
   return (
     <footer className="site-footer" data-reveal>
       <div className="footer-shell">
@@ -91,9 +108,32 @@ function Footer() {
             <div className="footer-block">
               <h4>Sign up for newsletter</h4>
               <p>Be the first to know about our exclusive deals.</p>
-              <a href="/" className="footer-link-button">
-                Join Now
-              </a>
+              <form onSubmit={onSubmit} className="footer-newsletter-form">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  aria-label="Email address"
+                  disabled={status.kind === 'loading'}
+                />
+                <button
+                  type="submit"
+                  className="footer-link-button"
+                  disabled={status.kind === 'loading'}
+                >
+                  {status.kind === 'loading' ? 'Joining…' : 'Join Now'}
+                </button>
+              </form>
+              {status.message ? (
+                <p
+                  role="status"
+                  className={`footer-newsletter-status footer-newsletter-status--${status.kind}`}
+                >
+                  {status.message}
+                </p>
+              ) : null}
             </div>
           </section>
 
