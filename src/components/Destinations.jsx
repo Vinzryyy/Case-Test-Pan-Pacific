@@ -1,10 +1,23 @@
-import { useState } from 'react'
-import { destinations } from '../constants/data'
+import { useEffect, useState } from 'react'
+import { fetchDestinations } from '../api'
 
 function Destinations() {
-  const [activeDestination, setActiveDestination] = useState('Australia')
+  const [destinations, setDestinations] = useState([])
+  const [activeDestination, setActiveDestination] = useState(null)
+
+  useEffect(() => {
+    fetchDestinations()
+      .then((rows) => {
+        setDestinations(rows)
+        if (rows.length > 0) setActiveDestination(rows[0].name)
+      })
+      .catch((err) => console.error('destinations failed', err))
+  }, [])
+
   const activeDest =
     destinations.find((dest) => dest.name === activeDestination) ?? destinations[0]
+
+  if (!activeDest) return <section className="destinations-section" aria-busy="true" />
 
   return (
     <section className="destinations-section" id="destinations" data-reveal>

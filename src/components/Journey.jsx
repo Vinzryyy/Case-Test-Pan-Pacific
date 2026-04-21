@@ -1,9 +1,17 @@
-import { useRef, useState } from 'react'
-import { journeyCards, journeyFilters } from '../constants/data'
+import { useEffect, useRef, useState } from 'react'
+import { journeyFilters } from '../constants/data'
+import { fetchJourneys } from '../api'
 
 function Journey() {
+  const [journeyCards, setJourneyCards] = useState([])
   const [activeFilter, setActiveFilter] = useState('All')
   const cardsRef = useRef(null)
+
+  useEffect(() => {
+    fetchJourneys()
+      .then(setJourneyCards)
+      .catch((err) => console.error('journeys failed', err))
+  }, [])
 
   const visibleCards =
     activeFilter === 'All'

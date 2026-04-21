@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { heroSlides } from '../constants/data'
+import { fetchHeroSlides } from '../api'
 
 const SWIPE_THRESHOLD = 50
 
@@ -23,6 +23,7 @@ const journeyOptions = [
 ]
 
 function Hero() {
+  const [heroSlides, setHeroSlides] = useState([])
   const [active, setActive] = useState(0)
   const [traveller, setTraveller] = useState(travellerOptions[0])
   const [journey, setJourney] = useState(journeyOptions[0])
@@ -30,6 +31,12 @@ function Hero() {
   const touchStartX = useRef(null)
   const filterBarRef = useRef(null)
   const slide = heroSlides[active]
+
+  useEffect(() => {
+    fetchHeroSlides()
+      .then(setHeroSlides)
+      .catch((err) => console.error('hero-slides failed', err))
+  }, [])
 
   useEffect(() => {
     if (!openMenu) return
@@ -73,6 +80,8 @@ function Hero() {
     if (event.key === 'ArrowRight') next()
     else if (event.key === 'ArrowLeft') prev()
   }
+
+  if (!slide) return <section className="hero-section" aria-busy="true" />
 
   return (
     <section
