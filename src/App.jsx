@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import './App.css'
+
+const heroTags = ['Solo Traveller', 'First-Timer', 'Lifestyle', 'Road Trip']
 
 const trendingItems = [
   {
@@ -73,7 +76,28 @@ const romanticCards = [
   },
 ]
 
-const destinations = ['Singapore', 'Australia', 'Malaysia', 'China', 'Canada', 'More destinations']
+const destinations = [
+  { name: 'Singapore', image: '/Destination/Singapore.jpg' },
+  { name: 'Australia', image: '/Destination/ausie.png' },
+  { name: 'Malaysia', image: '/Destination/Malaysia.jpg' },
+  { name: 'China', image: '/Destination/China.jpg' },
+  { name: 'Canada', image: '/Destination/Canada.jpg' },
+]
+
+const footerBrandSections = [
+  {
+    heading: 'Hotels and Resorts',
+    logos: ['/Footer/logo pan.png', '/Footer/Pan Pacific.png', '/Footer/park royal hotel.png'],
+  },
+  {
+    heading: 'Serviced Suites',
+    logos: ['/Footer/Park royal.png', '/Footer/Serviced Suited.png'],
+  },
+  {
+    heading: 'Wellness and Lifestyle',
+    logos: ['/Footer/Restorant.png', '/Footer/St.png', '/Footer/wellness.png'],
+  },
+]
 
 const footerBrandLogos = [
   '/Footer/logo pan.png',
@@ -98,6 +122,10 @@ const footerPolicies = [
 ]
 
 function App() {
+  const [activeDestination, setActiveDestination] = useState('Australia')
+  const activeDest =
+    destinations.find((dest) => dest.name === activeDestination) ?? destinations[0]
+
   return (
     <div className="page-shell">
       <header className="site-header">
@@ -150,6 +178,12 @@ function App() {
               Dine With Us
             </a>
           </nav>
+          <button type="button" className="mobile-user-icon" aria-label="User account">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21v-1a6 6 0 0 1 12 0v1" />
+            </svg>
+          </button>
         </div>
       </header>
 
@@ -157,14 +191,45 @@ function App() {
         <section className="hero-section">
           <div className="hero-overlay" />
           <div className="hero-content">
+            <span className="hero-location">
+              <span className="hero-location__pin" aria-hidden="true" />
+              Australia
+            </span>
             <div className="spotlight-tag">
               <span className="spotlight-dot" aria-hidden="true" />
               February Spotlight
             </div>
             <h1>Travel guide to Melbourne PARKROYAL Monash</h1>
+            <div className="hero-tags">
+              {heroTags.map((tag) => (
+                <span key={tag} className="hero-tag">{tag}</span>
+              ))}
+            </div>
             <a href="/" className="hero-link">
               More details
             </a>
+          </div>
+          <div className="hero-filter-bar">
+            <button type="button" className="hero-filter">
+              <span className="hero-filter__label">Who&apos;s exploring</span>
+              <span className="hero-filter__value">
+                All travellers
+                <span aria-hidden="true">&or;</span>
+              </span>
+            </button>
+            <button type="button" className="hero-filter">
+              <span className="hero-filter__label">Your journey to</span>
+              <span className="hero-filter__value">
+                Anywhere
+                <span aria-hidden="true">&or;</span>
+              </span>
+            </button>
+          </div>
+          <div className="hero-dots">
+            <span className="hero-dot" />
+            <span className="hero-dot" />
+            <span className="hero-dot hero-dot--active" />
+            <span className="hero-dot" />
           </div>
         </section>
 
@@ -292,6 +357,7 @@ function App() {
               >
                 <div className="experience-tab__overlay" />
                 <h3>{tab.title}</h3>
+                <span className="experience-tab__chevron" aria-hidden="true">&or;</span>
               </article>
             ))}
           </div>
@@ -350,35 +416,85 @@ function App() {
                 Pan Pacific that will ignite your wanderlust!
               </p>
 
-              <div className="destinations-list" aria-label="Destination list">
-                {destinations.map((destination) => (
-                  <button
-                    key={destination}
-                    type="button"
-                    className={`destination-item${
-                      destination === 'Australia' ? ' destination-item--active' : ''
-                    }`}
-                  >
-                    <span>{destination}</span>
-                    {destination === 'Australia' ? <span aria-hidden="true">&rarr;</span> : null}
-                  </button>
-                ))}
+              <div className="destinations-list desktop-destinations" aria-label="Destination list">
+                {destinations.map((dest) => {
+                  const isActive = dest.name === activeDestination
+                  return (
+                    <button
+                      key={dest.name}
+                      type="button"
+                      onClick={() => setActiveDestination(dest.name)}
+                      aria-pressed={isActive}
+                      className={`destination-item${
+                        isActive ? ' destination-item--active' : ''
+                      }`}
+                    >
+                      <span>{dest.name}</span>
+                      {isActive ? <span aria-hidden="true">&rarr;</span> : null}
+                    </button>
+                  )
+                })}
+                <button type="button" className="destination-item">
+                  <span>More destinations</span>
+                </button>
               </div>
             </div>
 
             <div className="destinations-media">
-              <img src="/ausie.png" alt="Australia destination view" />
+              <img src={activeDest.image} alt={`${activeDest.name} destination view`} />
             </div>
+          </div>
+
+          <div className="mobile-destinations">
+            <div className="mobile-destinations__header">
+              <h2>Explore the world with Pan Pacific</h2>
+              <p>
+                Discover your next adventure with our handpicked travel
+                inspiration, exciting guides, and spotlighted destinations from
+                Pan Pacific that will ignite your wanderlust!
+              </p>
+            </div>
+            <div className="mobile-destinations__cards">
+              {destinations.map((dest) => (
+                <div
+                  key={dest.name}
+                  className="mobile-dest-card"
+                  style={{ backgroundImage: `url(${dest.image})` }}
+                >
+                  <div className="mobile-dest-card__overlay" />
+                  <h3>{dest.name}</h3>
+                </div>
+              ))}
+            </div>
+            <button type="button" className="mobile-destinations__more">
+              Show More
+            </button>
           </div>
         </section>
       </main>
 
       <footer className="site-footer">
         <div className="footer-shell">
-          <div className="footer-logo-grid" aria-label="Pan Pacific brands">
+          <div className="footer-logo-grid desktop-footer-logos" aria-label="Pan Pacific brands">
             {footerBrandLogos.map((logo) => (
               <div key={logo} className="footer-logo-card">
                 <img src={logo} alt="" className="footer-logo-image" />
+              </div>
+            ))}
+          </div>
+
+          <div className="mobile-footer-logos" aria-label="Pan Pacific brands">
+            {footerBrandSections.map((section) => (
+              <div key={section.heading} className="mobile-footer-section">
+                <h4 className="mobile-footer-section__heading">{section.heading}</h4>
+                <div className="mobile-footer-section__logos">
+                  {section.logos.map((logo) => (
+                    <div key={logo} className="footer-logo-card">
+                      <img src={logo} alt="" className="footer-logo-image" />
+                    </div>
+                  ))}
+                </div>
+                <span className="mobile-footer-section__dot" aria-hidden="true" />
               </div>
             ))}
           </div>
