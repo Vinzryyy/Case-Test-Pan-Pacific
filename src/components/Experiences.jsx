@@ -8,7 +8,7 @@ function Experiences() {
     experienceCategories[0]
 
   return (
-    <section className="experiences-section" id="experiences">
+    <section className="experiences-section" id="experiences" data-reveal>
       <div
         className="experience-tabs"
         role="tablist"

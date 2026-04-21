@@ -19,7 +19,7 @@ function Journey() {
   }
 
   return (
-    <section className="journey-section" id="journey">
+    <section className="journey-section" id="journey" data-reveal>
       <div className="journey-layout">
         <aside className="journey-sidebar">
           <h2>Globe-trot with Pan Pacific</h2>

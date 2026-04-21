@@ -7,7 +7,7 @@ function Destinations() {
     destinations.find((dest) => dest.name === activeDestination) ?? destinations[0]
 
   return (
-    <section className="destinations-section" id="destinations">
+    <section className="destinations-section" id="destinations" data-reveal>
       <div className="destinations-layout">
         <div className="destinations-copy">
           <h2>Explore your next adventure with Pan Pacific</h2>

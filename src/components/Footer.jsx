@@ -6,7 +6,7 @@ import {
 
 function Footer() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" data-reveal>
       <div className="footer-shell">
         <div
           className="footer-logo-grid desktop-footer-logos"
