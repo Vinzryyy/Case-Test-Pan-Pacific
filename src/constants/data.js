@@ -1,4 +1,33 @@
-export const heroTags = ['Solo Traveller', 'First-Timer', 'Lifestyle', 'Road Trip']
+export const heroSlides = [
+  {
+    spotlight: 'February Spotlight',
+    location: 'Australia',
+    title: 'Travel guide to Melbourne PARKROYAL Monash',
+    tags: ['Solo Traveller', 'First-Timer', 'Lifestyle', 'Road Trip'],
+    image: '/HomePage.jpg',
+  },
+  {
+    spotlight: 'January Spotlight',
+    location: 'Singapore',
+    title: 'A weekend in Sentosa: family food, beach walks and night shows',
+    tags: ['Family', 'City Break', 'Food & Drink', 'Lifestyle'],
+    image: '/Destination/Singapore.jpg',
+  },
+  {
+    spotlight: 'March Spotlight',
+    location: 'Canada',
+    title: 'Whistler winter honeymoon and babymoon escape ideas',
+    tags: ['Couple', 'Winter', 'Honey Moon', 'Nature'],
+    image: '/card-road-trips.png',
+  },
+  {
+    spotlight: 'April Spotlight',
+    location: 'Malaysia',
+    title: 'Kuala Lumpur skyline, late-night markets and rooftop escapes',
+    tags: ['City', 'Night Life', 'Culture', 'Food & Drink'],
+    image: '/Destination/Malaysia.jpg',
+  },
+]
 
 export const trendingItems = [
   {

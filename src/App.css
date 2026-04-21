@@ -259,12 +259,36 @@
   width: min(var(--content-width), calc(100% - var(--page-gutter)));
   min-height: clamp(360px, 52vw, 520px);
   margin: 20px auto 0;
-  background:
-    linear-gradient(180deg, rgba(16, 24, 40, 0.08) 0%, rgba(16, 24, 40, 0.45) 100%),
-    url('/HomePage.jpg') center/cover no-repeat;
+  background: #1b1714;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  outline: none;
+  touch-action: pan-y;
+}
+
+.hero-section:focus-visible {
+  box-shadow: 0 0 0 3px rgba(194, 155, 71, 0.7);
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  pointer-events: none;
+}
+
+.hero-slide--active {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
 }
 
 .hero-overlay {
@@ -354,14 +378,33 @@
 }
 
 .hero-dot {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.hero-dot::before {
+  content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.35);
+  transition: background 180ms ease, transform 180ms ease;
 }
 
-.hero-dot--active {
+.hero-dot:hover::before,
+.hero-dot:focus-visible::before {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.hero-dot--active::before {
   background: #fff;
+  transform: scale(1.2);
 }
 
 .mobile-user-icon {
