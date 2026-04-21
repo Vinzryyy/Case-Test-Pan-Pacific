@@ -1,0 +1,66 @@
+import { journeyCards, journeyFilters } from '../constants/data'
+
+function Journey() {
+  return (
+    <section className="journey-section">
+      <div className="journey-layout">
+        <aside className="journey-sidebar">
+          <h2>Globe-trot with Pan Pacific</h2>
+          <div className="journey-filters" aria-label="Journey categories">
+            {journeyFilters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                className={`journey-filter${
+                  filter === 'Photo Journal' ? ' journey-filter--active' : ''
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+
+          <div className="journey-nav">
+            <button type="button" aria-label="Previous stories">
+              <span aria-hidden="true">&larr;</span>
+            </button>
+            <button type="button" aria-label="Next stories">
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+        </aside>
+
+        <div className="journey-cards">
+          {journeyCards.map((card, index) => (
+            <article key={`${card.title}-${index}`} className="journey-card">
+              <img
+                src={card.image}
+                alt={card.title}
+                className="journey-card__image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="journey-card__body">
+                <span className="journey-card__location">{card.location}</span>
+                <h3>{card.title}</h3>
+                <div className="journey-card__tags">
+                  <span>Category</span>
+                  <span>Category</span>
+                </div>
+              </div>
+              <a
+                href="/"
+                className="journey-card__cta"
+                aria-label={`Read ${card.title}`}
+              >
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default Journey
