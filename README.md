@@ -2,7 +2,7 @@
 
 A responsive marketing page built as a front-end case study: Pan Pacific Hotels' editorial homepage — trending destinations, editor's pick, a filterable travel-story feed, persona-based experiences, and an interactive destinations explorer.
 
-> **Live demo:** _add Vercel/Netlify URL here after deploy_
+> **Live demo:** https://case-test-pan-pacific.vercel.app/
 
 ## Highlights
 
@@ -97,15 +97,6 @@ The app is a static Vite SPA — any static host works.
 - **`minmax(0, 1fr)` everywhere** instead of `1fr` on grid columns that collapse on mobile. Prevents content (long filter rows, wide flex children) from growing the track beyond the viewport — a common responsive CSS-grid gotcha.
 - **Pseudo-element card link pattern** on the romantic cards: the `<a>` on the title extends its hit area via `::after { inset: 0 }` so the whole card is clickable without wrapping all the meta/tags inside one giant link announcement for screen readers.
 - **Mobile nav / destination lists are duplicate markup** rather than conditionally rendered. Lets CSS media queries own the breakpoint logic without JS layout thrash and avoids hydration flicker.
-
-## Follow-ups
-
-- Convert large PNG/JPG sources to WebP (`HomePage.jpg`, `ausie.png`, trending card art).
-- Replace the 6.8 KB thumbnail `public/Destination/Canada.jpg` with an HD source.
-- Add a Vitest + React Testing Library suite (start with the destinations click-to-swap and Journey arrow-scroll).
-- `IntersectionObserver`-driven fade-in on section reveal.
-- Wire the hero filter bar ("Who's exploring" / "Your journey to") and the utility-bar search icon to real state / modal.
-- Migrate to TypeScript for additional type safety.
 
 ---
 
