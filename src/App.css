@@ -891,24 +891,47 @@ section[id] {
 }
 
 .journey-nav button {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
   border: 1px solid rgba(255, 246, 232, 0.34);
   background: transparent;
   color: rgba(255, 246, 232, 0.84);
+  font-size: 1rem;
   cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease,
+    transform 120ms ease;
+}
+
+.journey-nav button:hover,
+.journey-nav button:focus-visible {
+  background: rgba(255, 246, 232, 0.12);
+  border-color: rgba(255, 246, 232, 0.7);
+  color: #fffaef;
+}
+
+.journey-nav button:active {
+  transform: scale(0.92);
 }
 
 .journey-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  display: flex;
   gap: 18px;
-  justify-content: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-padding-left: 0;
+}
+
+.journey-cards::-webkit-scrollbar {
+  display: none;
 }
 
 .journey-empty {
-  grid-column: 1 / -1;
+  flex: 1 1 auto;
   padding: 32px 16px;
   color: rgba(248, 241, 230, 0.72);
   font-size: 0.92rem;
@@ -917,10 +940,12 @@ section[id] {
 
 .journey-card {
   position: relative;
+  flex: 0 0 clamp(240px, 30%, 320px);
   background: #f7f1e6;
   color: #302729;
   overflow: hidden;
   max-width: none;
+  scroll-snap-align: start;
 }
 
 .journey-card__image {
@@ -1456,7 +1481,6 @@ section[id] {
 
   .editors-pick__layout,
   .journey-layout,
-  .journey-cards,
   .romantic-hero__content,
   .romantic-cards,
   .destinations-layout,
