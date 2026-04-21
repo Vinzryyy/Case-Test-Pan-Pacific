@@ -63,16 +63,22 @@ function Destinations() {
             Pacific that will ignite your wanderlust!
           </p>
         </div>
-        <div className="mobile-destinations__cards">
+        <div
+          className="mobile-destinations__cards"
+          aria-label="Destinations — swipe to browse"
+        >
           {destinations.map((dest) => (
-            <div
+            <button
               key={dest.name}
+              type="button"
+              onClick={() => setActiveDestination(dest.name)}
               className="mobile-dest-card"
               style={{ backgroundImage: `url(${dest.image})` }}
+              aria-label={`View ${dest.name} destination`}
             >
               <div className="mobile-dest-card__overlay" />
               <h3>{dest.name}</h3>
-            </div>
+            </button>
           ))}
         </div>
         <button type="button" className="mobile-destinations__more">

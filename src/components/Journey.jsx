@@ -1,23 +1,36 @@
+import { useState } from 'react'
 import { journeyCards, journeyFilters } from '../constants/data'
 
 function Journey() {
+  const [activeFilter, setActiveFilter] = useState('All')
+
+  const visibleCards =
+    activeFilter === 'All'
+      ? journeyCards
+      : journeyCards.filter((card) => card.category === activeFilter)
+
   return (
     <section className="journey-section">
       <div className="journey-layout">
         <aside className="journey-sidebar">
           <h2>Globe-trot with Pan Pacific</h2>
           <div className="journey-filters" aria-label="Journey categories">
-            {journeyFilters.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                className={`journey-filter${
-                  filter === 'Photo Journal' ? ' journey-filter--active' : ''
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
+            {journeyFilters.map((filter) => {
+              const isActive = filter === activeFilter
+              return (
+                <button
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  aria-pressed={isActive}
+                  className={`journey-filter${
+                    isActive ? ' journey-filter--active' : ''
+                  }`}
+                >
+                  {filter}
+                </button>
+              )
+            })}
           </div>
 
           <div className="journey-nav">
@@ -31,32 +44,37 @@ function Journey() {
         </aside>
 
         <div className="journey-cards">
-          {journeyCards.map((card, index) => (
-            <article key={`${card.title}-${index}`} className="journey-card">
-              <img
-                src={card.image}
-                alt={card.title}
-                className="journey-card__image"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="journey-card__body">
-                <span className="journey-card__location">{card.location}</span>
-                <h3>{card.title}</h3>
-                <div className="journey-card__tags">
-                  <span>Category</span>
-                  <span>Category</span>
+          {visibleCards.length === 0 ? (
+            <p className="journey-empty">
+              No stories under &ldquo;{activeFilter}&rdquo; just yet — check back soon.
+            </p>
+          ) : (
+            visibleCards.map((card) => (
+              <article key={`${card.category}-${card.title}`} className="journey-card">
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="journey-card__image"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="journey-card__body">
+                  <span className="journey-card__location">{card.location}</span>
+                  <h3>{card.title}</h3>
+                  <div className="journey-card__tags">
+                    <span>{card.category}</span>
+                  </div>
                 </div>
-              </div>
-              <a
-                href="/"
-                className="journey-card__cta"
-                aria-label={`Read ${card.title}`}
-              >
-                <span aria-hidden="true">&rarr;</span>
-              </a>
-            </article>
-          ))}
+                <a
+                  href="/"
+                  className="journey-card__cta"
+                  aria-label={`Read ${card.title}`}
+                >
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </article>
+            ))
+          )}
         </div>
       </div>
     </section>

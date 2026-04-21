@@ -730,6 +730,14 @@
   gap: 16px;
 }
 
+.journey-empty {
+  grid-column: 1 / -1;
+  padding: 32px 16px;
+  color: rgba(248, 241, 230, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .journey-card {
   position: relative;
   background: #f7f1e6;
@@ -1248,7 +1256,16 @@
   .romantic-cards,
   .destinations-layout,
   .footer-main {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .editors-pick__content,
+  .journey-sidebar,
+  .romantic-copy,
+  .romantic-summary,
+  .destinations-copy,
+  .footer-column {
+    min-width: 0;
   }
 
   .editors-pick__media {
@@ -1338,6 +1355,12 @@
 
   .hero-content {
     padding: 0 20px 80px;
+    min-width: 0;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(1.9rem, 7vw, 3rem);
+    max-width: none;
   }
 
   .spotlight-tag {
@@ -1471,6 +1494,19 @@
     scroll-snap-align: start;
   }
 
+  .trend-card h3,
+  .journey-card h3,
+  .romantic-card h3,
+  .editors-pick__content h3 {
+    max-width: none;
+  }
+
+  .trend-card__meta span,
+  .romantic-card__tags span,
+  .editors-pick__tags span {
+    white-space: normal;
+  }
+
   /* ── Editor's Pick ── */
   .editors-pick__heading {
     flex-direction: column;
@@ -1492,7 +1528,7 @@
   }
 
   .editors-pick__layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .editors-pick__media {
@@ -1512,7 +1548,7 @@
   }
 
   .journey-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding: 28px 0 32px;
     gap: 24px;
   }
@@ -1520,11 +1556,14 @@
   .journey-sidebar {
     text-align: center;
     padding: 0 20px;
+    min-width: 0;
   }
 
   .journey-sidebar h2 {
     max-width: none;
-    font-size: clamp(2.2rem, 8vw, 3rem);
+    font-size: clamp(1.75rem, 7.2vw, 2.8rem);
+    hyphens: manual;
+    word-break: normal;
   }
 
   .journey-filters {
@@ -1614,7 +1653,7 @@
   }
 
   .romantic-hero__content {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 18px;
     margin-bottom: 32px;
   }
@@ -1625,7 +1664,7 @@
   }
 
   .romantic-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding: 16px;
   }
 
@@ -1650,34 +1689,57 @@
 
   .mobile-destinations__header h2 {
     margin: 0;
-    font-size: clamp(2.2rem, 8vw, 3rem);
-    line-height: 0.92;
+    font-size: clamp(1.85rem, 7.2vw, 2.8rem);
+    line-height: 0.96;
     color: #2f2931;
   }
 
   .mobile-destinations__header p {
-    margin-top: 16px;
+    margin-top: 14px;
     color: #433933;
-    font-size: 0.9rem;
+    font-size: clamp(0.82rem, 3.4vw, 0.95rem);
     line-height: 1.5;
   }
 
   .mobile-destinations__cards {
-    display: grid;
-    gap: 0;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding: 4px clamp(18px, 4vw, 32px);
+    margin: 0 calc(clamp(18px, 4vw, 32px) * -1);
+  }
+
+  .mobile-destinations__cards::-webkit-scrollbar {
+    display: none;
   }
 
   .mobile-dest-card {
     position: relative;
-    aspect-ratio: 2.1 / 1;
-    min-height: 150px;
+    flex: 0 0 80%;
+    min-width: 230px;
+    max-width: 360px;
+    aspect-ratio: 4 / 5;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    padding: 0 28px 26px;
+    padding: 0 clamp(16px, 5vw, 24px) clamp(16px, 5vw, 22px);
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    scroll-snap-align: start;
+    border: 0;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    transition: transform 220ms ease;
+  }
+
+  .mobile-dest-card:hover,
+  .mobile-dest-card:focus-visible {
+    transform: translateY(-2px);
   }
 
   .mobile-dest-card__overlay {
@@ -1699,7 +1761,7 @@
     font-family: var(--heading-font);
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-size: clamp(1.55rem, 6.8vw, 2.4rem);
     letter-spacing: -0.01em;
     line-height: 1;
     text-align: left;
@@ -1780,7 +1842,7 @@
   }
 
   .footer-main {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .footer-column h3 {

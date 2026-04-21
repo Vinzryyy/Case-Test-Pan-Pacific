@@ -70,14 +70,46 @@ export const journeyFilters = [
 
 export const journeyCards = [
   {
+    category: 'Road Trips',
+    location: 'Canada',
+    title: 'Highway dreaming through the Canadian Rockies',
+    image: '/card-road-trips.png',
+  },
+  {
+    category: 'Photo Journal',
     location: 'Singapore',
-    title: 'Lorem ipsum dolor sit amet consectetur',
+    title: 'An afternoon photo walk across Sentosa',
     image: '/Istock.jpg',
   },
   {
+    category: 'Romantic',
+    location: 'Canada',
+    title: 'Whistler candlelit suites for two',
+    image: '/Destination/Canada.jpg',
+  },
+  {
+    category: 'Family Bonding',
+    location: 'Malaysia',
+    title: 'KL aquarium and tower views with the kids',
+    image: '/Destination/Malaysia.jpg',
+  },
+  {
+    category: 'Sustainable Travel',
+    location: 'Australia',
+    title: 'Slow-paced eco trails around Melbourne',
+    image: '/Destination/ausie.png',
+  },
+  {
+    category: 'Jet Setting',
     location: 'Singapore',
-    title: 'Lorem ipsum dolor sit amet consectetur',
-    image: '/Istock.jpg',
+    title: 'Business-class layover luxury guide',
+    image: '/Destination/Singapore.jpg',
+  },
+  {
+    category: 'Photo Journal',
+    location: 'China',
+    title: 'Great Wall at sunrise, frame by frame',
+    image: '/Destination/China.jpg',
   },
 ]
 
