@@ -17,8 +17,6 @@ function Destinations() {
   const activeDest =
     destinations.find((dest) => dest.name === activeDestination) ?? destinations[0]
 
-  if (!activeDest) return <section className="destinations-section" aria-busy="true" />
-
   return (
     <section className="destinations-section" id="destinations" data-reveal>
       <div className="destinations-layout">
@@ -58,12 +56,14 @@ function Destinations() {
         </div>
 
         <div className="destinations-media">
-          <img
-            src={activeDest.image}
-            alt={`${activeDest.name} destination view`}
-            loading="lazy"
-            decoding="async"
-          />
+          {activeDest ? (
+            <img
+              src={activeDest.image}
+              alt={`${activeDest.name} destination view`}
+              loading="lazy"
+              decoding="async"
+            />
+          ) : null}
         </div>
       </div>
 
