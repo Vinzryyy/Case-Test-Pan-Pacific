@@ -18,6 +18,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	chimw "github.com/go-chi/chi/v5/middleware"
 	"github.com/joho/godotenv"
+	"golang.org/x/time/rate"
 )
 
 func main() {
@@ -48,11 +49,14 @@ func main() {
 
 	r.Get("/healthz", handlers.Healthz(pool))
 
+	// 3 subscribe attempts up front, then 1 every 10 s per IP.
+	newsletterLimiter := appmw.NewIPRateLimiter(rate.Every(10*time.Second), 3)
+
 	r.Route("/api", func(r chi.Router) {
 		r.Get("/destinations", handlers.ListDestinations(pool))
 		r.Get("/hero-slides", handlers.ListHeroSlides(pool))
 		r.Get("/journeys", handlers.ListJourneys(pool))
-		r.Post("/newsletter", handlers.Subscribe(pool))
+		r.With(appmw.RateLimit(newsletterLimiter)).Post("/newsletter", handlers.Subscribe(pool))
 	})
 
 	srv := &http.Server{
