@@ -47,12 +47,16 @@ function Experiences() {
               <div className="romantic-card__row">
                 <img
                   src={card.image}
-                  alt={card.title}
+                  alt=""
                   className="romantic-card__thumb"
                   loading="lazy"
                   decoding="async"
                 />
-                <h3>{card.title}</h3>
+                <h3>
+                  <a href="/" className="romantic-card__link">
+                    {card.title}
+                  </a>
+                </h3>
               </div>
               <div className="romantic-card__tags">
                 {card.labels.map((label) => (

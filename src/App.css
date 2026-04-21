@@ -668,25 +668,33 @@
   padding: clamp(64px, 8vw, 84px) clamp(20px, 3vw, 36px) 20px;
   background: transparent;
   display: grid;
-  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
   align-items: start;
   margin-top: -2px;
 }
 
+.journey-sidebar {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .journey-sidebar h2 {
-  margin: 0 0 26px;
-  max-width: 205px;
+  margin: 0 0 28px;
+  max-width: none;
   color: #f7efe2;
-  font-size: clamp(2rem, 3vw, 2.7rem);
-  line-height: 0.9;
+  font-size: clamp(2.2rem, 3.4vw, 3rem);
+  line-height: 0.95;
   letter-spacing: -0.045em;
+  text-align: center;
 }
 
 .journey-filters {
-  display: grid;
-  gap: 10px;
-  justify-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
 }
 
 .journey-filter {
@@ -709,8 +717,9 @@
 
 .journey-nav {
   display: flex;
+  justify-content: center;
   gap: 14px;
-  margin-top: 36px;
+  margin-top: 22px;
   padding-left: 0;
 }
 
@@ -726,8 +735,9 @@
 
 .journey-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  justify-content: center;
 }
 
 .journey-empty {
@@ -912,7 +922,31 @@
 }
 
 .romantic-card {
+  position: relative;
   color: #f7efe2;
+  cursor: pointer;
+}
+
+.romantic-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.romantic-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.romantic-card:hover .romantic-card__link {
+  color: #fff6e4;
+}
+
+.romantic-card__link:focus-visible::after {
+  outline: 2px solid #c49a3c;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .romantic-card__eyebrow {
@@ -1052,38 +1086,40 @@
 .footer-shell {
   width: min(var(--content-width), calc(100% - var(--page-gutter)));
   margin: 0 auto;
-  padding: 48px 0 28px;
+  padding: 56px 0 32px;
 }
 
 .footer-logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
-  gap: 12px;
-  padding-bottom: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  padding-bottom: 32px;
   border-bottom: 1px solid rgba(33, 28, 29, 0.1);
 }
 
 .footer-logo-card {
-  min-height: 64px;
+  min-height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 8px;
+  padding: 14px 12px;
   background: #ffffff;
-  border: 1px solid rgba(33, 28, 29, 0.08);
+  border: 1px solid rgba(33, 28, 29, 0.1);
+  border-radius: 2px;
 }
 
 .footer-logo-image {
-  max-height: 28px;
+  max-height: 40px;
+  max-width: 100%;
   width: auto;
   object-fit: contain;
 }
 
 .footer-main {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(180px, 1fr));
-  gap: 28px;
-  padding: 32px 0;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(160px, 1fr));
+  gap: 36px;
+  padding: 40px 0;
   border-bottom: 1px solid rgba(33, 28, 29, 0.1);
 }
 
@@ -1094,55 +1130,57 @@
 }
 
 .footer-column h3 {
-  font-size: clamp(1.65rem, 2.2vw, 2.1rem);
-  line-height: 1;
-  margin-bottom: 18px;
+  font-size: clamp(1.4rem, 1.8vw, 1.75rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
 }
 
 .footer-column h4 {
   font-family: "Instrument Sans", "Segoe UI", sans-serif;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  font-weight: 600;
   letter-spacing: 0.01em;
+  line-height: 1.4;
 }
 
 .footer-block p,
 .footer-contact-item {
   margin: 0;
-  color: rgba(47, 41, 49, 0.78);
-  font-size: 0.92rem;
-  line-height: 1.6;
+  color: rgba(47, 41, 49, 0.72);
+  font-size: 0.88rem;
+  line-height: 1.55;
 }
 
 .footer-contact-list {
   display: grid;
-  gap: 14px;
-  margin-top: 16px;
+  gap: 12px;
+  margin-top: 14px;
 }
 
 .footer-contact-item {
   display: grid;
-  grid-template-columns: 20px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
   align-items: start;
 }
 
 .footer-contact-item--plain {
   grid-template-columns: 1fr;
-  padding-left: 32px;
+  padding-left: 28px;
 }
 
 .footer-contact-icon {
-  width: 20px;
+  width: 18px;
   display: inline-flex;
   justify-content: center;
   color: #b28d2f;
   font-size: 0.95rem;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 
 .footer-block {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .footer-link-button {
@@ -1150,25 +1188,25 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  padding: 0.78rem 1.1rem;
-  border: 1px solid rgba(178, 141, 47, 0.6);
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(178, 141, 47, 0.55);
   color: #946d1f;
   text-decoration: none;
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 .footer-store-badge {
-  width: 160px;
+  width: 140px;
   max-width: 100%;
   height: auto;
 }
 
 .footer-bottom {
   display: grid;
-  gap: 20px;
-  padding-top: 24px;
+  gap: 18px;
+  padding-top: 28px;
 }
 
 .footer-affiliates {
@@ -1179,16 +1217,16 @@
 }
 
 .footer-affiliate-copy {
-  color: rgba(47, 41, 49, 0.65);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  color: rgba(47, 41, 49, 0.6);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .footer-affiliate-logos {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
 }
 
 .footer-affiliate-logo {
@@ -1198,24 +1236,24 @@
 }
 
 .footer-affiliate-logo--uol {
-  height: 28px;
+  height: 24px;
 }
 
 .footer-affiliate-logo--pan {
-  height: 32px;
+  height: 28px;
 }
 
 .footer-policy-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 18px;
+  gap: 8px 20px;
 }
 
 .footer-policy-links a,
 .footer-copyright {
-  color: rgba(47, 41, 49, 0.6);
+  color: rgba(47, 41, 49, 0.55);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   line-height: 1.5;
 }
 
@@ -1250,8 +1288,6 @@
   }
 
   .editors-pick__layout,
-  .journey-layout,
-  .journey-cards,
   .romantic-hero__content,
   .romantic-cards,
   .destinations-layout,
@@ -1871,6 +1907,7 @@
   }
 
   .footer-contact-item--plain {
+    grid-template-columns: 1fr;
     padding-left: 28px;
   }
 
