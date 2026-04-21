@@ -10,7 +10,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="page-shell">
+    <div className="page-shell" id="top">
       <Header />
       <main>
         <Hero />

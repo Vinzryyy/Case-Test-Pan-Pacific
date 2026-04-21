@@ -2,7 +2,7 @@ import { editorTags } from '../constants/data'
 
 function EditorsPick() {
   return (
-    <section className="editors-pick-section">
+    <section className="editors-pick-section" id="editors-pick">
       <div className="editors-pick__heading">
         <span className="section-icon" aria-hidden="true" />
         <h2>Editor&apos;s pick</h2>

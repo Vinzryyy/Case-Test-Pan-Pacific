@@ -175,6 +175,21 @@ export const footerBrandLogos = [
   '/Footer/St.png',
 ]
 
+export const menuSections = [
+  {
+    heading: 'Explore',
+    links: [
+      { label: 'Home', href: '#top' },
+      { label: "What's Trending", href: '#trending' },
+      { label: "Editor's Pick", href: '#editors-pick' },
+      { label: 'Globe-trot Stories', href: '#journey' },
+      { label: 'Experiences', href: '#experiences' },
+      { label: 'Romantic Escapes', href: '#romantic' },
+      { label: 'Destinations', href: '#destinations' },
+    ],
+  },
+]
+
 export const footerPolicies = [
   'Hotel Policy',
   'Sitemap',

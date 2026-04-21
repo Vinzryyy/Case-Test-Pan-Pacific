@@ -2,7 +2,7 @@ import { experienceTabs, romanticCards } from '../constants/data'
 
 function Experiences() {
   return (
-    <section className="experiences-section">
+    <section className="experiences-section" id="experiences">
       <div className="experience-tabs" aria-label="Experience categories">
         {experienceTabs.map((tab) => (
           <article
@@ -21,6 +21,7 @@ function Experiences() {
 
       <div
         className="romantic-hero"
+        id="romantic"
         style={{ '--romantic-image': "url('/Romantic.png')" }}
       >
         <div className="romantic-hero__overlay" />

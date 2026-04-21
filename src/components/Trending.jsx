@@ -2,7 +2,7 @@ import { trendingItems } from '../constants/data'
 
 function Trending() {
   return (
-    <section className="trending-section">
+    <section className="trending-section" id="trending">
       <div className="section-heading">
         <h2>What&apos;s trending</h2>
         <p>

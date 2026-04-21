@@ -10,7 +10,7 @@ function Journey() {
       : journeyCards.filter((card) => card.category === activeFilter)
 
   return (
-    <section className="journey-section">
+    <section className="journey-section" id="journey">
       <div className="journey-layout">
         <aside className="journey-sidebar">
           <h2>Globe-trot with Pan Pacific</h2>
