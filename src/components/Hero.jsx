@@ -75,23 +75,6 @@ function Hero() {
         </a>
       </div>
 
-      <div className="hero-filter-bar">
-        <button type="button" className="hero-filter">
-          <span className="hero-filter__label">Who&apos;s exploring</span>
-          <span className="hero-filter__value">
-            All travellers
-            <span aria-hidden="true">&or;</span>
-          </span>
-        </button>
-        <button type="button" className="hero-filter">
-          <span className="hero-filter__label">Your journey to</span>
-          <span className="hero-filter__value">
-            Anywhere
-            <span aria-hidden="true">&or;</span>
-          </span>
-        </button>
-      </div>
-
       <div className="hero-dots" role="tablist" aria-label="Select slide">
         {heroSlides.map((s, idx) => (
           <button
